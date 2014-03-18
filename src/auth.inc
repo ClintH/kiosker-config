@@ -7,11 +7,11 @@ class Auth {
 
 	function __construct() {
 		session_start();
-
 		// Load base config
 		require_once("device.inc");
 		$d = new Device();
 		$error = $d->load("base");
+		
 		if ($error === false)  {
 			$this->baseAuth = array($d->getMasterHash(),$d->getMasterSalt());
 		} else {
@@ -25,7 +25,7 @@ class Auth {
 		if (strlen($this->baseAuth[1]) == 0) {
 			Header("Location: errorNoConfig.php?msg=".urlencode("masterPasswordSalt is not set"));
 			die();
-		} 
+		}
 	}
 
 	public function hashWithSalt($salt, $pass) {

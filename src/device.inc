@@ -22,7 +22,9 @@ class Device {
 
 		$this->data = json_decode($c, true);
 		if ($this->data === null) {
-			$err= json_last_error();
+			$err = "Unknown";
+			if (function_exists("json_last_error"))
+				$err= json_last_error();
 			if ($err == JSON_ERROR_SYNTAX)
 				return "JSON syntax error";
 			else if ($err == JSON_ERROR_DEPTH)
