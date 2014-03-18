@@ -1,0 +1,8 @@
+{
+    "home": [{ "url":"http://fltspc.itu.dk", "title":"FltSpc"}],
+    "sites": [{"url":"http://pol.dk", "title":"Google"}, {"url":"http://dr.dk", "title":"DR"}, {"url":"http://xbox.com", "title":"Xbox"}],
+	"layout": 2,
+    "quietHoursStartTime": "23.00",
+    "quietHoursStopTime": "07.00",
+	"allowHome": true
+}
