@@ -9,8 +9,23 @@ class Auth {
 		session_start();
 
 		// Load base config
-		$this->baseAuth = $this->getAuthForDevice("base");
-		print_r($baseAuth);
+		require_once("device.inc");
+		$d = new Device();
+		$error = $d->load("base");
+		if ($error === false)  {
+			$this->baseAuth = array($d->getMasterHash(),$d->getMasterSalt());
+		} else {
+			Header("Location: errorNoConfig.php?msg=".urlencode("masterPasswordHash/masterPasswordSalt not set, or base.json is invalid. (".$error.")"));
+			die();
+		}
+		if (strlen($this->baseAuth[0]) == 0) {
+			Header("Location: errorNoConfig.php?msg=".urlencode("masterPasswordHash is not set"));
+			die();
+		} 
+		if (strlen($this->baseAuth[1]) == 0) {
+			Header("Location: errorNoConfig.php?msg=".urlencode("masterPasswordSalt is not set"));
+			die();
+		} 
 	}
 
 	public function hashWithSalt($salt, $pass) {
@@ -27,11 +42,11 @@ class Auth {
 	public function getAuthForDevice($device) {
 		require_once("device.inc");
 		$d = new Device();
-		$load = $d->load($device);
-		if ($load === false)  {
+		$error = $d->load($device);
+		if ($error === false)  {
 			return array($d->getHash(),$d->getSalt());
 		} else {
-			die($load);
+			die($error);
 		}
 	}
 

@@ -43,5 +43,14 @@ class Device {
 	public function getSalt() {
 		return $this->data["passwordSalt"];
 	}
+
+	public function getMasterHash() {
+		return $this->data["masterPasswordHash"];
+	}
+
+	public function getMasterSalt() {
+		return $this->data["masterPasswordSalt"];
+
+	}
 }
 ?>
