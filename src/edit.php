@@ -50,6 +50,9 @@
 		}
 		$err = $device->write();
 		if ($err === false) {
+			$p["when"] = date("c");
+			$p["op"] = "edit";
+			@file_put_contents("configs/edits.log", json_encode($p)."\r\n", FILE_APPEND);
 			echo("Saved!");
 		} else {
 			echo("Error: ".$err);

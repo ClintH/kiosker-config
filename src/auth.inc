@@ -7,6 +7,8 @@ class Auth {
 
 	function __construct() {
 		session_start();
+		date_default_timezone_seT("UTC");
+
 		// Load base config
 		require_once("device.inc");
 		$d = new Device();
@@ -71,6 +73,13 @@ class Auth {
 		unset($_SESSION["auth"]);
 		unset($_SESSION["isAdmin"]);
 		
+
+		$log = array();
+		$log["when"] = date("c");
+		$log["op"] = "login";
+		$log["device"] = $device;
+		@file_put_contents("configs/edits.log", json_encode($log)."\r\n", FILE_APPEND);
+
 		if ($device == "admin") {
 			// Admin login
 			$computed = $this->hashWithSalt($this->baseAuth[1], $pass);
