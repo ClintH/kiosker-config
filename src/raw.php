@@ -13,6 +13,12 @@
 		Header("Location: login.php");
 		die();
 	}
+	
+	// Don't allow regular device owners to edit
+	// raw JSON
+	if (!$auth->isAdmin()) {
+		Header("Location: edit.php?device=".$device);
+	}
 
 	if (isset($_POST["raw"])) {
 		if (file_put_contents("configs/".$device.".json", $_POST["raw"]) === false) {
