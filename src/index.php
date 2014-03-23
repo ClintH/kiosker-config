@@ -30,7 +30,7 @@
 	} else if ($auth->isLoggedIn()) {
 		?>
 		<ul>
-			<li><a href="raw.php?device=<?php echo($_SESSION["auth"]) ?>">Edit Kiosker</a></li>
+			<li><a href="edit.php?device=<?php echo($_SESSION["auth"]) ?>">Edit Kiosker</a></li>
 			<li><a href="logout.php">Log out</a></li>
 		</ul>
 		<?php

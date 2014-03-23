@@ -1,5 +1,6 @@
 html {
 	padding: 1.5em;
+  padding-top: 0em;
 	margin-left: 1em;
 	margin-right: 1em;
 	font-family: "Consolas", "Courier New", monospaced;
@@ -11,6 +12,48 @@ html {
   margin-top: 2em;  
   background-color: rgb(244, 243, 215);
 
+}
+h2 {
+  font-weight: normal;
+}
+.try .row .inline {
+  float: left;
+  max-width: 150px;
+}
+.try {
+  font-size: 80%;
+  padding: 1em;
+  background-color: white;
+  border-radius: 5px;
+  clear: both;
+}
+dt {
+  color: #FF0080;
+}
+dd {
+  padding-bottom: 1em;
+}
+.try .row {
+  clear: both;
+  padding-top: 1em;
+  border-bottom: 1px solid silver;
+  min-height: 10em;
+  overflow: hidden;
+}
+.try .row .text {
+  margin-left: 160px;
+}
+.try:hover {
+  background-color: #C0C0C0;
+  cursor: pointer;
+}
+.collapsed .tryContents {
+  display: none;
+}
+.try h1 {
+  color: #BB005E;
+  font-size: 1.5em;
+  text-transform: uppercase;
 }
 footer {
   padding-top: 1em;

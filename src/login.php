@@ -14,7 +14,7 @@
 					Header("Location: admin.php");
 					die();
 				} else {
-					Header("Location: raw.php?device=".$_POST["device"]);
+					Header("Location: edit.php?device=".$_POST["device"]);
 					die();
 				}
 				$msg = "Logged in.";
